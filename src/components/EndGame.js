@@ -5,7 +5,7 @@ const EndGame = ({ handleClick, score }) => {
     <>
       <h2>Game Over</h2>
       <h3>Score: {score}</h3>
-      <button onClick={handleClick} className="btn">
+      <button onClick={handleClick} className="btn roll-btn">
         New Game
       </button>
     </>

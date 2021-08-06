@@ -89,15 +89,6 @@
   width: 49%;
 }
 
-.btn {
-  display: inline-block;
-  border: none;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 3px;
-  margin-top: 10px;
-}
-
 .release-btn {
   background-color: rgb(128, 3, 3);
 }
