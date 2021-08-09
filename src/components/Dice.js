@@ -8,9 +8,15 @@ const Dice = ({
   hold,
   setHold,
   setDisabledBtn,
+  disabledBtn,
+  finalRoll,
+  setFinalRoll,
 }) => {
   const handleNewRoll = () => {
     setRollCount(rollCount + 1);
+    if (rollCount === 2) {
+      setFinalRoll(true);
+    }
     setRoll(newRoll(roll, hold));
     setDisabledBtn(false);
   };
@@ -38,6 +44,7 @@ const Dice = ({
           <div key={`dice-${i}`} className="dice-box">
             <div className="dice"></div>
             <button
+              disabled={disabledBtn}
               onClick={handleNewHold(i)}
               className={hold[i] ? "btn release-btn" : "btn hold-btn"}
             >
@@ -51,6 +58,7 @@ const Dice = ({
           onClick={handleNewRoll}
           disable={(rollCount > 3).toString()}
           className="btn roll-btn"
+          disabled={finalRoll}
         >
           {rollCount < 3
             ? rollCount === 0

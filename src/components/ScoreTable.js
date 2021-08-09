@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 
-const ScoreTable = ({ roll, section, submitScore, disabledBtn }) => {
+const ScoreTable = ({
+  roll,
+  section,
+  submitScore,
+  disabledBtn,
+  setFinalRoll,
+}) => {
   let [scored, setScored] = useState(new Array(section.length).fill(null));
 
   const handleClick = (category, index) => () => {
+    setFinalRoll(false);
     let temp = new Array(...scored);
     temp[index] = category(roll);
     setScored(temp);

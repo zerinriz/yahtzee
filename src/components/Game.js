@@ -12,6 +12,7 @@ function Game() {
   let [highScore, setHighScore] = useState(0);
   let [gameCount, setGameCound] = useState(0);
   const [disabledBtn, setDisabledBtn] = useState(true);
+  const [finalRoll, setFinalRoll] = useState(false);
 
   let takeTurn = (score) => {
     if (turn === 12) {
@@ -67,6 +68,9 @@ function Game() {
             rollCount={rollCount}
             setRollCount={setRollCount}
             setDisabledBtn={setDisabledBtn}
+            disabledBtn={disabledBtn}
+            finalRoll={finalRoll}
+            setFinalRoll={setFinalRoll}
           />
         )}
         <hr />
@@ -75,6 +79,7 @@ function Game() {
           takeTurn={takeTurn}
           key={gameCount}
           disabledBtn={disabledBtn}
+          setFinalRoll={setFinalRoll}
         />
       </div>
     </div>
