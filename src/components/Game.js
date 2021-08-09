@@ -9,16 +9,29 @@ function Game() {
   let [roll, setRoll] = useState([0, 0, 0, 0, 0]);
   let [hold, setHold] = useState([false, false, false, false, false]);
   let [rollCount, setRollCount] = useState(0);
-
-  // key for score component reset, could hold a prev game state too?
+  let [highScore, setHighScore] = useState(0);
   let [gameCount, setGameCound] = useState(0);
+  const [disabledBtn, setDisabledBtn] = useState(true);
 
   let takeTurn = (score) => {
-    setTotalScore(totalScore + score);
-    setTurn(turn + 1);
-    setRoll([0, 0, 0, 0, 0]);
-    setHold([false, false, false, false, false]);
-    setRollCount(0);
+    if (turn === 12) {
+      if (highScore < totalScore) {
+        setHighScore(totalScore);
+      }
+      setDisabledBtn(true);
+      setTotalScore(totalScore + score);
+      setTurn(turn + 1);
+      setRoll([0, 0, 0, 0, 0]);
+      setHold([false, false, false, false, false]);
+      setRollCount(0);
+    } else {
+      setTotalScore(totalScore + score);
+      setTurn(turn + 1);
+      setRoll([0, 0, 0, 0, 0]);
+      setHold([false, false, false, false, false]);
+      setRollCount(0);
+      setDisabledBtn(true);
+    }
   };
 
   let newGame = () => {
@@ -40,7 +53,11 @@ function Game() {
 
       <div className="container">
         {turn >= 13 ? (
-          <EndGame handleClick={newGame} score={totalScore} />
+          <EndGame
+            newGame={newGame}
+            totalScore={totalScore}
+            highScore={highScore}
+          />
         ) : (
           <Dice
             roll={roll}
@@ -49,10 +66,16 @@ function Game() {
             setHold={setHold}
             rollCount={rollCount}
             setRollCount={setRollCount}
+            setDisabledBtn={setDisabledBtn}
           />
         )}
         <hr />
-        <Score roll={roll} takeTurn={takeTurn} key={gameCount} />
+        <Score
+          roll={roll}
+          takeTurn={takeTurn}
+          key={gameCount}
+          disabledBtn={disabledBtn}
+        />
       </div>
     </div>
   );

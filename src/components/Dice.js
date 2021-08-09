@@ -1,9 +1,18 @@
 import React from "react";
 
-const Dice = ({ roll, setRoll, rollCount, setRollCount, hold, setHold }) => {
+const Dice = ({
+  roll,
+  setRoll,
+  rollCount,
+  setRollCount,
+  hold,
+  setHold,
+  setDisabledBtn,
+}) => {
   const handleNewRoll = () => {
     setRollCount(rollCount + 1);
     setRoll(newRoll(roll, hold));
+    setDisabledBtn(false);
   };
 
   const handleNewHold = (index) => () => {
@@ -27,9 +36,8 @@ const Dice = ({ roll, setRoll, rollCount, setRollCount, hold, setHold }) => {
       <div>
         {roll.map((val, i) => (
           <div key={`dice-${i}`} className="dice-box">
-            <div className="dice">
-            </div>
-            <button 
+            <div className="dice"></div>
+            <button
               onClick={handleNewHold(i)}
               className={hold[i] ? "btn release-btn" : "btn hold-btn"}
             >

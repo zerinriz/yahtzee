@@ -2,7 +2,7 @@ import React from "react";
 import text from "./constants";
 import ScoreTable from "./ScoreTable";
 
-const Score = ({ roll, takeTurn }) => {
+const Score = ({ roll, takeTurn, disabledBtn }) => {
   const submitScore = (category) => {
     takeTurn(category(roll));
   };
@@ -11,6 +11,7 @@ const Score = ({ roll, takeTurn }) => {
     <div>
       <h2>Score</h2>
       <ScoreTable
+        disabledBtn={disabledBtn}
         roll={roll}
         section={text.upperSection}
         submitScore={submitScore}

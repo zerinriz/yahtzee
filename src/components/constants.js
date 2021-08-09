@@ -41,13 +41,6 @@ const upperSection = [
     description: "The sum of dice with the number 6",
     calc: scoreCategories.sumOfType(6),
   },
-  {
-    id: genId(),
-    category: "Section Bonus",
-    description: "Total of 63 or more points in these six boxes",
-    calc: scoreCategories.upperBonus,
-    bonus: true,
-  },
 ];
 
 const lowerSection = [
@@ -67,7 +60,7 @@ const lowerSection = [
     id: genId(),
     category: "Full House",
     description: "Three of one number and two of another",
-    calc: scoreCategories.fullHouse,
+    calc: scoreCategories.fullHouse, //
   },
   {
     id: genId(),

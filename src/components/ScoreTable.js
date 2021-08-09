@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ScoreTable = ({ roll, section, submitScore }) => {
+const ScoreTable = ({ roll, section, submitScore, disabledBtn }) => {
   let [scored, setScored] = useState(new Array(section.length).fill(null));
 
   const handleClick = (category, index) => () => {
@@ -34,6 +34,7 @@ const ScoreTable = ({ roll, section, submitScore }) => {
                     row.calc(sectionTotal)
                   ) : (
                     <button
+                      disabled={disabledBtn}
                       onClick={handleClick(row.calc, i)}
                       className="btn hold-btn"
                     >
@@ -45,16 +46,6 @@ const ScoreTable = ({ roll, section, submitScore }) => {
             ))
           : null}
       </tbody>
-      <tfoot>
-        <tr>
-          <td colSpan="2">Total:</td>
-          <td>
-            {section[section.length - 1].bonus
-              ? sectionTotal + section[section.length - 1].calc(sectionTotal)
-              : sectionTotal}
-          </td>
-        </tr>
-      </tfoot>
     </table>
   );
 };
