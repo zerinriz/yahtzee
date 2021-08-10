@@ -20,7 +20,7 @@ const Score = ({ roll, takeTurn, disabledBtn, setFinalRoll }) => {
       <ScoreTable
         disabledBtn={disabledBtn}
         roll={roll}
-        section={text.upperSection}
+        section={text.lowerSection}
         submitScore={submitScore}
         setFinalRoll={setFinalRoll}
       />
