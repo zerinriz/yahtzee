@@ -17,7 +17,7 @@ function Game() {
   let takeTurn = (score) => {
     if (turn === 12) {
       if (highScore < totalScore) {
-        setHighScore(totalScore);
+        setHighScore(totalScore + score);
       }
       setDisabledBtn(true);
       setTotalScore(totalScore + score);
